@@ -59,6 +59,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'customer.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -136,3 +138,11 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'viniciustatuta@gmail.com'
+EMAIL_HOST_PASSWORD = 'tmhuedwlcricquti'
+# EMAIL_SUBJECT_PREFIX = '[Contato]'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

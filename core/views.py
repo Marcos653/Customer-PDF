@@ -3,6 +3,9 @@ from rest_framework.viewsets import ModelViewSet
 from .serializer import * 
 from core.models import Customer
 
+#email
+from django.core.mail import send_mail
+
 # pdf
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -70,6 +73,17 @@ def render_pdf_view(request):
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
 
+def index(request):
+
+   print('kkkkkkkkkkkkkkkkkkk')
+   send_mail('Hello from Marcos',
+   'Hello There, this is an automated message',
+   'viniciustatuta@gmail.com',
+   ['marcosstatuta@gmail.com'],
+   fail_silently=False)
+   print('kkkkkkkFOIIIIIkkkkkkkkkkkk')
+   
+   return render(request, 'send/index.html')
 
 class CustomerViewSet(ModelViewSet):
     queryset = Customer.objects.all()

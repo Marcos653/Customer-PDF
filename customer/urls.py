@@ -24,7 +24,7 @@ router = DefaultRouter()
 router.register(r'customer', CustomerViewSet)
 
 urlpatterns = [
-    # path('', include(router.urls)),
+    path('', include(router.urls)),
     path('', include('core.urls', namespace='customers')),
     path('admin/', admin.site.urls),
 ] 
