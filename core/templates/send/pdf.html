@@ -1,0 +1,98 @@
+
+{% block extra_style %}
+<style type="text/css">
+    @page {
+        size: landscape;
+    }
+
+    body {
+        font-family: "Helvetica", "sans-serif";
+        color: #580000;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Certificado de conclusão</title>
+    <meta property="og:locale" content="pt_br" />
+
+    <style type='text/css'>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            color: black;
+            display: table;
+            font-family: Georgia, serif;
+            font-size: 24px;
+            text-align: center;
+        }
+        .container {
+            border: 20px solid tan;
+            width: 750px;
+            height: 563px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .logo {
+            color: tan;
+        }
+
+        .marquee {
+            color: tan;
+            font-size: 48px;
+            margin: 20px;
+        }
+        .assignment {
+            margin: 20px;
+        }
+        .person {
+            border-bottom: 2px solid black;
+            font-size: 32px;
+            font-style: italic;
+            margin: 20px auto;
+            width: 400px;
+        }
+        .reason {
+            margin: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Curso: {{course_name}}</h1>
+        </div>
+
+        <div class="marquee">
+            Certificate of Completion
+        </div>
+
+        <div class="assignment">
+            conclusão: {{conclusion}}
+        </div>
+
+        <div class="person">
+            nome:{{name}}
+        </div>
+
+        <div class="reason">
+            Carga Horária: {{workload}}<br/>
+            cpf: {{cpf}}
+        </div>
+    </div>
+
+    <img src="file:///STATIC_ROOT/img/certificate.png" />
+</body>
+        
+        
+
+{% endblock %}
