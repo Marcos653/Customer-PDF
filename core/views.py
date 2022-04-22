@@ -1,3 +1,4 @@
+from io import BytesIO
 from django.shortcuts import render, get_object_or_404
 from core.services import render_to_pdf
 from rest_framework.viewsets import ModelViewSet
@@ -57,8 +58,8 @@ def customer_render_pdf_view(request, *args, **kwargs):
        html, dest=response)
 
     subject = 'Management Automated Email- '
-   #  html_message = render_to_string('send/pdf.html')
-    pdf = HTML(string=html, base_url='').write_pdf(
+    html_message = render_to_string('send/pdf.html')
+    pdf = HTML(string=html, base_url='customers/pdf2.html').write_pdf(
         stylesheets=[CSS(string='body { font-family: serif}')])   
     plain_message = 'foi'
     recipient_list = ['marcosstatuta@gmail.com']
