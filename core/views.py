@@ -57,13 +57,14 @@ def customer_render_pdf_view(request, *args, **kwargs):
     pisa_status = pisa.CreatePDF(
        html, dest=response)
 
+    #send email
     subject = 'Management Automated Email- '
     html_message = render_to_string('send/pdf.html')
     pdf = HTML(string=html, base_url='customers/pdf2.html').write_pdf(
         stylesheets=[CSS(string='body { font-family: serif}')])   
     plain_message = 'foi'
-    recipient_list = ['marcosstatuta@gmail.com']
-    from_email = 'viniciustatuta@gmail.com'
+    recipient_list = ['to@email.com']
+    from_email = 'from@email.com'
     toaddrs = recipient_list 
     mail = EmailMessage(subject, body='oiiiiiiii', from_email=from_email, to=recipient_list )
     mail.attach('.pdf', pdf, "application/pdf")
@@ -104,13 +105,15 @@ def render_pdf_view(request):
       return HttpResponse('We had some errors <pre>' + html + '</pre>')
    return response
 
+#Three way how to send email
+
 # def index(request):
 
 #    print('kkkkkkkkkkkkkkkkkkk')
 #    send_mail('Hello from Marcos',
 #    'Hello There, this is an automated message',
-#    'viniciustatuta@gmail.com',
-#    ['marcosstatuta@gmail.com'],
+#    'from@email.com',
+#    ['to@email.com'],
 #    fail_silently=False)
 #    print('kkkkkkkFOIIIIIkkkkkkkkkkkk')
    
@@ -123,8 +126,8 @@ def index(request):
     pdf = HTML(string=html_message, base_url='').write_pdf(
         stylesheets=[CSS(string='body { font-family: serif}')])   
     plain_message = 'foi'
-    recipient_list = ['marcosstatuta@gmail.com']
-    from_email = 'viniciustatuta@gmail.com'
+    recipient_list = ['to@email.com']
+    from_email = 'from@email.com'
     toaddrs = recipient_list 
     mail = EmailMessage(subject, body='oiiiiiiii', from_email=from_email, to=recipient_list )
     mail.attach('.pdf', pdf, "application/pdf")
@@ -161,7 +164,7 @@ def index(request):
 # @api_view(['POST'])
 # def index(request):
 #    email = EmailMessage(
-#       'Subject here', 'Here is the message.', 'viniciustatuta@gmail.com', ['marcosstatuta@gmail.com'])
+#       'Subject here', 'Here is the message.', 'from@email.com', ['to@email.com'])
 #    email.attach_file('core/Document.pdf')
 #    email.send()
 #    email.send()
